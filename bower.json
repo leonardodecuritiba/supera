@@ -1,0 +1,25 @@
+{
+  "name": "supera",
+  "description": "",
+  "main": "",
+  "authors": [
+    "suj3it0culto <silva.zanin@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/leonardodecuritiba/supera",
+  "directory": "public/bower_components/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "inputmask": "^3.3.8",
+    "emoji-css": "^1.0.2",
+    "sweetalert2": "^6.6.10",
+    "jquery-maskmoney": "^3.0.2",
+    "adminbsb-materialdesign": "^1.0.5"
+  }
+}
