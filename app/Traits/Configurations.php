@@ -18,5 +18,9 @@ trait Configurations {
 		return DataHelper::getPrettyDateTime( $value );
 	}
 
+	public function getShortName() {
+		return DataHelper::getShortName( $this->attributes['description'] );
+	}
+
 
 }

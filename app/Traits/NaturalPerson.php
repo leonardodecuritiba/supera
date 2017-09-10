@@ -34,4 +34,8 @@ trait NaturalPerson {
 		return DataHelper::mask( $this->attributes['rg'], '#.###.###-##' );
 	}
 
+	public function getShortName() {
+		return DataHelper::getShortName( $this->attributes['name'] );
+	}
+
 }

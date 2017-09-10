@@ -6,7 +6,11 @@
 
 @section('style_content')
 
-    {{Html::style('bower_components/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css')}}
+    @include('layouts.inc.datatable.css')
+
+    <!-- Sweetalert Css -->
+    {{Html::style('bower_components/sweetalert2/dist/sweetalert2.min.css')}}
+    {{Html::style('bower_components/emoji-css/_site/emoji.css')}}
 
 @endsection
 
@@ -46,19 +50,47 @@
 @section('script_content')
 
     <!-- Jquery DataTable Plugin Js -->
-    {{Html::script('bower_components/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js')}}
-    {{Html::script('bower_components/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')}}
-    {{Html::script('bower_components/adminbsb-materialdesign/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js')}}
-    {{Html::script('bower_components/adminbsb-materialdesign/plugins/jquery-datatable/extensions/export/buttons.flash.min.js')}}
-    {{Html::script('bower_components/adminbsb-materialdesign/plugins/jquery-datatable/extensions/export/jszip.min.js')}}
-    {{Html::script('bower_components/adminbsb-materialdesign/plugins/jquery-datatable/extensions/export/pdfmake.min.js')}}
-    {{Html::script('bower_components/adminbsb-materialdesign/plugins/jquery-datatable/extensions/export/vfs_fonts.js')}}
-    {{Html::script('bower_components/adminbsb-materialdesign/plugins/jquery-datatable/extensions/export/buttons.html5.min.js')}}
-    {{Html::script('bower_components/adminbsb-materialdesign/plugins/jquery-datatable/extensions/export/buttons.print.min.js')}}
+    @include('layouts.inc.datatable.js')
 
+    <!-- SweetAlert Plugin Js -->
+    {{Html::script('bower_components/sweetalert2/dist/sweetalert2.min.js')}}
 
-    <!-- Custom Js -->
-    {{--{{Html::script('bower_components/adminbsb-materialdesign/js/admin.js')}}--}}
-    {{Html::script('bower_components/adminbsb-materialdesign/js/pages/tables/jquery-datatable.js')}}
+    <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+
+    <script>
+        function showDeleteTableMessage($el) {
+            var entity = $($el).data('entity');
+            swal({
+                title: "Você tem certeza?",
+                text: "Esta ação será irreversível!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "<i class='em em-triumph'></i> Sim! ",
+                cancelButtonText: "<i class='em em-cold_sweat'></i> Não, cancele por favor! ",
+            }).then(function () {
+                swal(
+                    "<i class='em em-disappointed_relieved'></i>",
+//                    "<i class='em em-disappointed_relieved'></i> Removido (a)!",
+                    "<b>" + entity + "</b> removido (a) com sucesso!",
+                    "success"
+                )
+                $_TABLE_
+                    .row($($el).parents('tr'))
+                    .remove()
+                    .draw();
+            }, function (dismiss) {
+                if (dismiss === 'cancel') {
+                    swal(
+//                        "<i class='em em-heart_eyes'></i> Cancelado",
+                        "<i class='em em-heart_eyes'></i>",
+                        "Ufa, <b>" + entity + "</b> está a salvo :)",
+                        "error"
+                    )
+                }
+            });
+        }
+    </script>
 
 @endsection

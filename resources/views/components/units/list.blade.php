@@ -35,10 +35,7 @@
                title=""
                data-original-title="Editar"><i
                         class="material-icons">dvr</i></a>
-            <a href="{{ route($PageResponse->route.'.destroy', $sel->id) }}"
-               class="btn btn-simple btn-xs btn-danger btn-icon remove"
-               data-placement="top" rel="tooltip" title="" data-original-title="Remover"><i
-                        class="material-icons">close</i></a>
+            @include('layouts.inc.buttons.delete')
         </td>
     </tr>
 @empty
