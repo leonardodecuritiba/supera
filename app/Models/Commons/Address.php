@@ -2,15 +2,17 @@
 
 namespace App\Models\Commons;
 
+use App\Models\Configs\CepCities;
+use App\Models\Configs\CepStates;
 use App\Models\Patients\Patient;
 use App\Models\Patients\Relative;
-use App\Traits\Configurations;
+use App\Traits\AddressTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Address extends Model {
 	use SoftDeletes;
-	use Configurations;
+	use AddressTrait;
 	public $timestamps = true;
 	protected $fillable = [
 		'state_id',
@@ -32,6 +34,14 @@ class Address extends Model {
 	 */
 	public function patient() {
 		return $this->hasOne( Patient::class );
+	}
+
+	public function state() {
+		return $this->belongsTo( CepStates::class );
+	}
+
+	public function city() {
+		return $this->belongsTo( CepCities::class );
 	}
 
 	public function relative() {

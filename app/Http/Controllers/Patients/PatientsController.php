@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Patients;
 
 use App\Http\Controllers\Controller;
+use App\Models\Configs\CepStates;
 use App\Models\Patients\Patient;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,6 @@ class PatientsController extends Controller {
 	public function index() {
 		$this->PageResponse->main_title = $this->names;
 		$this->PageResponse->response   = Patient::all();
-
 		return view( $this->main_folder . '.index' )
 			->with( 'PageResponse', $this->PageResponse );
 	}
@@ -74,7 +74,7 @@ class PatientsController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  \App\Patient $patient
+	 * @param  \App\Models\Patients\Patient $patient
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
@@ -85,19 +85,24 @@ class PatientsController extends Controller {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  \App\Patient $patient
+	 * @param  \App\Models\Patients\Patient $patient
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit( Patient $patient ) {
-		//
+		$this->PageResponse->main_title         = $this->names;
+		$this->PageResponse->auxiliar['states'] = CepStates::getAlltoSelectList( [ 'id', 'description' ] );
+
+		return view( $this->main_folder . '.show' )
+			->with( 'PageResponse', $this->PageResponse )
+			->with( 'Data', $patient );
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request $request
-	 * @param  \App\Patient $patient
+	 * @param  \App\Models\Patients\Patient $patient
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
@@ -108,7 +113,7 @@ class PatientsController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  \App\Patient $patient
+	 * @param  \App\Models\Patients\Patient $patient
 	 *
 	 * @return \Illuminate\Http\Response
 	 */

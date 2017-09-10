@@ -77,7 +77,7 @@
                     </li>
                 </ul>
             </li>
-            <li @if(Route::currentRouteName()=='patients.index') class="active" @endif>
+            <li @if((Route::currentRouteName()=='patients.index') || (Route::currentRouteName()=='patients.edit')) class="active" @endif>
                 <a href="{{route('patients.index')}}">
                     <i class="material-icons">face</i>
                     <span>Pacientes</span>

@@ -16,6 +16,16 @@ class Contact extends Model {
 		'emails'
 	];
 
+
+	public function getEmailsEncode() {
+		$emails = $this->attributes['emails'];
+		if ( ( $emails == null ) || ( $emails == '' ) ) {
+			return null;
+		}
+
+		return json_encode( explode( ';', $emails ) );
+	}
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Relashionships

@@ -73,6 +73,12 @@ class DataHelper {
 		                                ->diffInYears( Date::now() ) : $value;
 	}
 
+	static public function getYearsOld( $value ) {
+		$years = self::getYears( $value );
+
+		return ( $years != null ) ? $years . ' anos' : $value;
+	}
+
 	static public function mask( $val, $mask ) {
 		if ( $val != null || $val != "" ) {
 			$maskared = '';

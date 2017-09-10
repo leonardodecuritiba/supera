@@ -6,11 +6,11 @@
 
 @section('style_content')
 
+    <!-- Jquery DataTable Plugin Css -->
     @include('layouts.inc.datatable.css')
 
     <!-- Sweetalert Css -->
-    {{Html::style('bower_components/sweetalert2/dist/sweetalert2.min.css')}}
-    {{Html::style('bower_components/emoji-css/_site/emoji.css')}}
+    @include('layouts.inc.sweetalert.css')
 
 @endsection
 
@@ -22,7 +22,6 @@
                 {{$PageResponse->main_title}}
             </h2>
         </div>
-
         <!-- Exportable Table -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -68,9 +67,7 @@
                                         <td>{{ $sel->getFormattedCpf() }}</td>
                                         <td>{{ $sel->getYears() }}</td>
                                         <td class="text-right">
-                                            <a data-content="{{$sel}}"
-                                               data-target='#modal-edit'
-                                               data-toggle='modal'
+                                            <a href="{{route($PageResponse->route.'.edit',$sel->id)}}"
                                                class="btn btn-simple btn-warning btn-xs btn-icon edit"
                                                data-placement="top"
                                                rel="tooltip"
@@ -101,51 +98,11 @@
 
 @section('script_content')
 
+
     <!-- Jquery DataTable Plugin Js -->
     @include('layouts.inc.datatable.js')
 
     <!-- SweetAlert Plugin Js -->
-    {{Html::script('bower_components/sweetalert2/dist/sweetalert2.min.js')}}
-
-    <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-
-    <!-- Custom Js -->
-    {{--{{Html::script('bower_components/adminbsb-materialdesign/js/admin.js')}}--}}
-
-    <script>
-        function showDeleteTableMessage($el) {
-            var entity = $($el).data('entity');
-            swal({
-                title: "Você tem certeza?",
-                text: "Esta ação será irreversível!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "<i class='em em-triumph'></i> Sim! ",
-                cancelButtonText: "<i class='em em-cold_sweat'></i> Não, cancele por favor! ",
-            }).then(function () {
-                swal(
-                    "<i class='em em-disappointed_relieved'></i>",
-//                    "<i class='em em-disappointed_relieved'></i> Removido (a)!",
-                    "<b>" + entity + "</b> removido (a) com sucesso!",
-                    "success"
-                )
-                $_TABLE_
-                    .row($($el).parents('tr'))
-                    .remove()
-                    .draw();
-            }, function (dismiss) {
-                if (dismiss === 'cancel') {
-                    swal(
-//                        "<i class='em em-heart_eyes'></i> Cancelado",
-                        "<i class='em em-heart_eyes'></i>",
-                        "Ufa, <b>" + entity + "</b> está a salvo :)",
-                        "error"
-                    )
-                }
-            });
-        }
-    </script>
+    @include('layouts.inc.sweetalert.js')
 
 @endsection

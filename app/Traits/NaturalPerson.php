@@ -18,6 +18,10 @@ trait NaturalPerson {
 		return DataHelper::getYears( $this->attributes['birthday'] );
 	}
 
+	public function getYearsOld() {
+		return DataHelper::getYearsOld( $this->attributes['birthday'] );
+	}
+
 	public function setCpfAttribute( $value ) {
 		return $this->attributes['cpf'] = DataHelper::getOnlyNumbers( $value );
 	}
@@ -36,6 +40,10 @@ trait NaturalPerson {
 
 	public function getShortName() {
 		return DataHelper::getShortName( $this->attributes['name'] );
+	}
+
+	public function getFormattedBirthday() {
+		return DataHelper::getPrettyDate( $this->attributes['birthday'] );
 	}
 
 }

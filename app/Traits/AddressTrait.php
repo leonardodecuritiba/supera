@@ -5,6 +5,11 @@ namespace App\Traits;
 use App\Helpers\DataHelper;
 
 trait AddressTrait {
+
+	public function getCreatedAtAttribute( $value ) {
+		return DataHelper::getPrettyDateTime( $value );
+	}
+
 	public function getFormatedZip() {
 		return DataHelper::mask( $this->attributes['zip'], '#####-###' );
 	}
@@ -21,10 +26,6 @@ trait AddressTrait {
 //	{
 //		return $this->attributes['city'] . ' - ' . $this->attributes['state'];
 //	}
-
-	public function getCreatedAtAttribute( $value ) {
-		return DataHelper::getPrettyDateTime( $value );
-	}
 
 	public function setZipAttribute( $value ) {
 		return $this->attributes['zip'] = DataHelper::getOnlyNumbers( $value );
