@@ -20,6 +20,7 @@
     "emoji-css": "^1.0.2",
     "sweetalert2": "^6.6.10",
     "jquery-maskmoney": "^3.0.2",
-    "adminbsb-materialdesign": "^1.0.5"
+    "adminbsb-materialdesign": "^1.0.5",
+    "jquery": "^3.2.1"
   }
 }
