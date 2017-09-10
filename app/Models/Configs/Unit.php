@@ -7,7 +7,7 @@ use App\Traits\Configurations;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Unity extends Model {
+class Unit extends Model {
 	use SoftDeletes;
 	use Configurations;
 	public $timestamps = true;

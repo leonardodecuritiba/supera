@@ -10,11 +10,8 @@ class DatabaseSeeder extends Seeder {
 	 */
 	public function run() {
 		$start = microtime( true );
-
-		$this->call( ConfigsTablesSeeder::class );
-
-		factory( \App\Models\Commons\Address::class, 50 )->create();
-		factory( \App\Models\Commons\Contact::class, 50 )->create();
+//		$this->call( ConfigsTablesSeeder::class );
+		factory( \App\Models\Patients\Patient::class, 50 )->create();
 		factory( \App\Models\Commons\Phone::class, 50 )->create();
 		$this->command->info( 'DatabaseSeeder complete: in ' . round( ( microtime( true ) - $start ), 3 ) . 's ...' );
 

@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Configs;
 
 use App\Http\Controllers\Controller;
-use App\Models\Configs\Brand;
+use App\Models\Configs\PhoneType;
 use Illuminate\Http\Request;
 
-class BrandsController extends Controller {
+class PhoneTypesController extends Controller {
 
-	protected $entity = "brands";
-	protected $sex = "F";
-	protected $name = "Marca";
-	protected $names = "Marcas";
-	protected $route = "brands";
+	protected $entity = "phone_types";
+	protected $sex = "M";
+	protected $name = "Tipo de Telefone";
+	protected $names = "Tipos de Telefone";
+	protected $route = "phone_types";
 	protected $main_folder = 'pages.configs';
 	protected $PageResponse;
 
@@ -45,7 +45,7 @@ class BrandsController extends Controller {
 	 */
 	public function index() {
 		$this->PageResponse->main_title = $this->names;
-		$this->PageResponse->response   = Brand::all();
+		$this->PageResponse->response   = PhoneType::all();
 
 		return view( $this->main_folder . '.index' )
 			->with( 'PageResponse', $this->PageResponse );
@@ -74,22 +74,22 @@ class BrandsController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  \App\Models\Configs\Brand $brands
+	 * @param  \App\PhoneType $phoneType
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show( Brand $brands ) {
+	public function show( PhoneType $phoneType ) {
 		//
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  \App\Models\Configs\Brand $brand
+	 * @param  \App\PhoneType $phoneType
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit( Brand $brand ) {
+	public function edit( PhoneType $phoneType ) {
 		//
 	}
 
@@ -97,22 +97,22 @@ class BrandsController extends Controller {
 	 * Update the specified resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request $request
-	 * @param  \App\Models\Configs\Brand $brand
+	 * @param  \App\PhoneType $phoneType
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update( Request $request, Brand $brand ) {
+	public function update( Request $request, PhoneType $phoneType ) {
 		//
 	}
 
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  \App\Models\Configs\Brand $brand
+	 * @param  \App\PhoneType $phoneType
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy( Brand $brand ) {
+	public function destroy( PhoneType $phoneType ) {
 		//
 	}
 }

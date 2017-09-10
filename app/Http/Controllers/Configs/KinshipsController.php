@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Configs;
 
 use App\Http\Controllers\Controller;
-use App\Models\Configs\Brand;
+use App\Models\Configs\Kinship;
 use Illuminate\Http\Request;
 
-class BrandsController extends Controller {
+class KinshipsController extends Controller {
 
-	protected $entity = "brands";
-	protected $sex = "F";
-	protected $name = "Marca";
-	protected $names = "Marcas";
-	protected $route = "brands";
+	protected $entity = "kinships";
+	protected $sex = "M";
+	protected $name = "Parentesco";
+	protected $names = "Parentescos";
+	protected $route = "kinships";
 	protected $main_folder = 'pages.configs';
 	protected $PageResponse;
 
@@ -45,7 +45,7 @@ class BrandsController extends Controller {
 	 */
 	public function index() {
 		$this->PageResponse->main_title = $this->names;
-		$this->PageResponse->response   = Brand::all();
+		$this->PageResponse->response   = Kinship::all();
 
 		return view( $this->main_folder . '.index' )
 			->with( 'PageResponse', $this->PageResponse );
@@ -74,22 +74,22 @@ class BrandsController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  \App\Models\Configs\Brand $brands
+	 * @param  \App\Kinship $kinship
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show( Brand $brands ) {
+	public function show( Kinship $kinship ) {
 		//
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  \App\Models\Configs\Brand $brand
+	 * @param  \App\Kinship $kinship
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit( Brand $brand ) {
+	public function edit( Kinship $kinship ) {
 		//
 	}
 
@@ -97,22 +97,22 @@ class BrandsController extends Controller {
 	 * Update the specified resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request $request
-	 * @param  \App\Models\Configs\Brand $brand
+	 * @param  \App\Kinship $kinship
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update( Request $request, Brand $brand ) {
+	public function update( Request $request, Kinship $kinship ) {
 		//
 	}
 
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  \App\Models\Configs\Brand $brand
+	 * @param  \App\Kinship $kinship
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy( Brand $brand ) {
+	public function destroy( Kinship $kinship ) {
 		//
 	}
 }

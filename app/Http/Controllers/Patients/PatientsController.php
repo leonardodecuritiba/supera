@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Configs;
+namespace App\Http\Controllers\Patients;
 
 use App\Http\Controllers\Controller;
-use App\Models\Configs\Brand;
+use App\Models\Patients\Patient;
 use Illuminate\Http\Request;
 
-class BrandsController extends Controller {
+class PatientsController extends Controller {
 
-	protected $entity = "brands";
-	protected $sex = "F";
-	protected $name = "Marca";
-	protected $names = "Marcas";
-	protected $route = "brands";
-	protected $main_folder = 'pages.configs';
+	protected $entity = "patients";
+	protected $sex = "M";
+	protected $name = "Paciente";
+	protected $names = "Pacientes";
+	protected $route = "patients";
+	protected $main_folder = 'pages.patients';
 	protected $PageResponse;
 
 
@@ -45,7 +45,7 @@ class BrandsController extends Controller {
 	 */
 	public function index() {
 		$this->PageResponse->main_title = $this->names;
-		$this->PageResponse->response   = Brand::all();
+		$this->PageResponse->response   = Patient::all();
 
 		return view( $this->main_folder . '.index' )
 			->with( 'PageResponse', $this->PageResponse );
@@ -74,22 +74,22 @@ class BrandsController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  \App\Models\Configs\Brand $brands
+	 * @param  \App\Patient $patient
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show( Brand $brands ) {
+	public function show( Patient $patient ) {
 		//
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  \App\Models\Configs\Brand $brand
+	 * @param  \App\Patient $patient
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit( Brand $brand ) {
+	public function edit( Patient $patient ) {
 		//
 	}
 
@@ -97,22 +97,22 @@ class BrandsController extends Controller {
 	 * Update the specified resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request $request
-	 * @param  \App\Models\Configs\Brand $brand
+	 * @param  \App\Patient $patient
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update( Request $request, Brand $brand ) {
+	public function update( Request $request, Patient $patient ) {
 		//
 	}
 
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  \App\Models\Configs\Brand $brand
+	 * @param  \App\Patient $patient
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy( Brand $brand ) {
+	public function destroy( Patient $patient ) {
 		//
 	}
 }

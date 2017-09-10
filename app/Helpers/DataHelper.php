@@ -32,7 +32,6 @@ class DataHelper {
 
 	static public function getPrettyDateTimeToMonth( $value ) {
 		Date::setLocale( 'pt_BR' );
-
 		return ( $value != null ) ? Date::createFromFormat( 'Y-m-d H:i:s', $value )->format( 'F/Y' ) : $value;
 	}
 
@@ -66,8 +65,12 @@ class DataHelper {
 
 	static public function getShortName( $value ) {
 		$value = explode( ' ', $value );
-
 		return ( count( $value ) > 1 ) ? ( $value[0] . " " . end( $value ) ) : $value[0];
+	}
+
+	static public function getYears( $value ) {
+		return ( $value != null ) ? Date::createFromFormat( 'Y-m-d', $value )
+		                                ->diffInYears( Date::now() ) : $value;
 	}
 
 	static public function mask( $val, $mask ) {

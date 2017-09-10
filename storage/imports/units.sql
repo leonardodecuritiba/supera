@@ -1,4 +1,4 @@
-INSERT INTO `unities` (`id`, `code`, `description`, `created_at`, `updated_at`, `deleted_at`) VALUES
+INSERT INTO `units` (`id`, `code`, `description`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'KG', 'KILO', '2016-12-07 18:38:42', NULL, NULL),
 (2, 'M', 'METRO', '2016-12-07 18:38:42', NULL, NULL),
 (3, 'CM', 'CENTÍMETRO', '2016-12-07 18:38:42', NULL, NULL),
